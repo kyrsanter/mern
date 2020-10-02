@@ -3,6 +3,6 @@ const {registerController} = require('../controllers/auth.controllers.js')
 
 const router = Router();
 
-router.post('/register', registerController)
+router.get('/register', registerController)
 
 module.exports = router;
