@@ -1,4 +1,4 @@
-const {Schema}        = require('mongoose');
+const {Schema, model}        = require('mongoose');
 const bcrypt          = require('bcrypt');
 
 const {logger}        = require('../helpers/loger.helper')
@@ -56,5 +56,16 @@ userSchema.methods = {
 			}
 			return hash
 		});
+	},
+	authenticate: function(plainedPassword) {
+		return bcrypt.compare(plainedPassword, this.hashed_password, (err, res) => {
+			if (err) {
+				logger('Error in comparing passwords');
+				return false;
+			}
+			return res
+		})
 	}
 }
+
+module.exports = model('User', userSchema)
