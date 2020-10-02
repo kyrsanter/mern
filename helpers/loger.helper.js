@@ -17,4 +17,5 @@ exports.logger = (message) => {
 			}
 		})
 	})
+	return
 }
