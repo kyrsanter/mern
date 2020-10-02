@@ -14,6 +14,8 @@ dotenv.config({
 
 const app = express();
 
+app.use(bodyParser.json())
+
 if (process.env.NODE_ENV === 'dev') {
 	// app.use(cors({
 	// 	origin: process.env.CLIENT_URL
